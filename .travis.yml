@@ -1,0 +1,17 @@
+sudo: required
+services:
+  - docker
+
+before_install: 
+  - docker build -f ./client/Dockerfile.dev -t rajneeshm49/multi-client ./client
+
+script:
+  - docker run rajneeshm49/multi-client true
+
+after_success:
+  - docker build -t rajneeshm49/multi-client ./client
+  - docker build -t rajneeshm49/multi-server ./server
+  - docker build -t rajneeshm49/multi-nginx ./nginx
+  
+  #docker login
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password=stdin
