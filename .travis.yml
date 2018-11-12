@@ -6,7 +6,7 @@ before_install:
   - docker build -f ./client/Dockerfile.dev -t rajneeshm49/multi-client ./client
 
 script:
-  - docker run rajneeshm49/multi-client true
+  - docker run rajneeshm49/multi-client ng test
 
 after_success:
   - docker build -t rajneeshm49/multi-client ./client
