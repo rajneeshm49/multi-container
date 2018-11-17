@@ -5,10 +5,10 @@ services:
 before_install:
   - docker build -t rajneeshm49/multi-client -f ./client/Dockerfile.dev ./client
 
-script:
-  - docker run rajneeshm49/multi-client ng test --watch false --code-coverage --no-progress
+# script:
+#   - docker run rajneeshm49/multi-client ng test --watch false --code-coverage --no-progress
 
-after_success:
+script:
   - docker build -t rajneeshm49/multi-client ./client
   - docker build -t rajneeshm49/multi-server ./server
   - docker build -t rajneeshm49/multi-nginx ./nginx
