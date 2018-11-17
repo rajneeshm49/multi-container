@@ -20,7 +20,7 @@ describe('AppComponent', () => {
   //   expect(app).toBeTruthy();
   // });
   it(`should have as title 'client'`, () => {
-    return true;
+    return true; 
   });
   // it('should render title in a h1 tag', async(() => {
   //   const fixture = TestBed.createComponent(AppComponent);
