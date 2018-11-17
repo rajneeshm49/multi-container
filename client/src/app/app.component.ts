@@ -7,6 +7,7 @@ import { HomeService } from '../services/home.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  title1 = 'abc';
   title = 'client';
 
   blog = {hero: ''};
