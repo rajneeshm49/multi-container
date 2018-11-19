@@ -27,7 +27,7 @@ deploy:
   region: "ap-south-1"
   app: "multi-container"
   env: "MultiContainer-env"
-  bucket_name: "elasticbeanstalk-ap-south-1-370687047370",
+  bucket_name: "elasticbeanstalk-ap-south-1-370687047370"
   bucket_path: "multi-container"
   on:
     branch: master
