@@ -1,12 +1,13 @@
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
+const keys = require('./env_var');
 
 var app = express();
 
 //Redis connection code below
 var redis = require('redis');
-var client = redis.createClient(6379, 'redis'); // this creates a new client
+var client = redis.createClient(keys.redisPort, keys.redisHost); // this creates a new client
 
 client.on('connect', function() {
     console.log('Redis client connected successfully');
