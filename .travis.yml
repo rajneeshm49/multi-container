@@ -31,6 +31,6 @@ deploy:
   bucket_path: "multi-container"
   on:
     branch: master
-  access:key_id: "$ACCESS_KEY_ID_EBS"
+  access_key_id: "$ACCESS_KEY_ID_EBS"
   secret_access_key:
     secure: "$SECRET_ACCESS_KEY_EBS"
