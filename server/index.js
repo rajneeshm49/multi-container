@@ -14,6 +14,10 @@ client.on('connect', function() {
 });
 
 client.on('error', function (err) {
+    console.log('Something went wrong. Please check this error:' + err);
+});
+
+client.on('error', function (err) {
     console.log('Something went wrong in redis connection ' + err);
 });
 //using MW
