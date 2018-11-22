@@ -6,20 +6,20 @@ const keys = require('./env_var');
 var app = express();
 
 //Redis connection code below
-// var redis = require('redis');
-// var client = redis.createClient(keys.redisPort, keys.redisHost); // this creates a new client
+var redis = require('redis');
+var client = redis.createClient(keys.redisPort, keys.redisHost); // this creates a new client
 
-// client.on('connect', function() {
-//     console.log('Redis client connected successfully');
-// });
+client.on('connect', function() {
+    console.log('Redis client connected successfully');
+});
 
-// client.on('error', function (err) {
-//     console.log('Something went wrong. Please check this error:' + err);
-// });
+client.on('error', function (err) {
+    console.log('Something went wrong. Please check this error:' + err);
+});
 
-// client.on('error', function (err) {
-//     console.log('Something went wrong in redis connection ' + err);
-// });
+client.on('error', function (err) {
+    console.log('Something went wrong in redis connection ' + err);
+});
 //using MW
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -31,17 +31,16 @@ app.use(function(req, res, next) {
   });
 
 app.post('/', function(req, res) {
-    // client.set("mykey", req.body.hero, function(err, reply) {
-    //     if(reply) {
-    //         client.get("mykey", function(err, val) {
-    //             return res.json({"success": true, "mykey":val + ' great! Its working'});
-    //         })
-    //     } else {
-    //         return res.json({"success": false, "msg": "couldnt set value in redis"});
-    //     }
+    client.set("mykey", req.body.hero, function(err, reply) {
+        if(reply) {
+            client.get("mykey", function(err, val) {
+                return res.json({"success": true, "mykey":val + ' great! Its working'});
+            })
+        } else {
+            return res.json({"success": false, "msg": "couldnt set value in redis"}); 
+        }
         
-    // })
-    return res.json({"success": true, "mykey":req.body.hero + ' dude! Its working'});
+    })
 })
 
 app.set('port', process.env.PORT || 3000);
