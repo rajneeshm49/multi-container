@@ -34,10 +34,10 @@ app.post('/', function(req, res) {
     client.set("mykey", req.body.hero, function(err, reply) {
         if(reply) {
             client.get("mykey", function(err, val) {
-                return res.json({"success": true, "mykey":val + ' great! Its working'});
+                return res.json({"success": true, "mykey":val + ' great! The app is live and working'});
             })
         } else {
-            return res.json({"success": false, "msg": "couldnt set value in redis"}); 
+            return res.json({"success": false, "msg": "couldnt set value in redis"});
         }
         
     })
